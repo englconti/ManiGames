@@ -1,0 +1,9 @@
+<h1>Pick Your Game!</h1>
+
+
+  <% @games.each do |game|%>
+    <div class="container">
+      <%= game.title %>
+      <img src="<%= game.gamecover %>" alt="">
+    </div>
+  <% end %>

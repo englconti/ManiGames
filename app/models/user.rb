@@ -10,7 +10,7 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true
   validates :username, presence: true, uniqueness: true
   # Check if this will work to define rolls for the user when renting or advertising:
-  validates :role, inclusion: { in: %w[owner renter] }
+  # validates :role, inclusion: { in: %w[owner renter nil] }
 end
 
 #      invoke  active_record
