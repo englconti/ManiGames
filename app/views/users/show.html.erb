@@ -1,21 +1,55 @@
-<h1>Hello, <%= @user.username %> !</h1>
-<br>
+<div style="background-color:#827397; color: #363062">
+  <h1>Hello, <%= @user.username %> !</h1>
+  <br>
 
-<h2>OWN GAMES</h2>
-<% @user.games.each do |game|%>
-<div style="border: 1px solid black; border-radius: 3px; margin: 3px; width: 400px">
-<p><%=  game.title%></p>
-<p>Available? <%= game.available ? "YES" : "NO" %></p>
+  <div id="games-list" style="box-shadow: -3px 3px 10px #363062; background-color:#E9D5CA;  border-radius: 5px; padding: 30px; display:flex; justify-content: space-around; width: 90vw; margin: 0 auto;">
 
+    <div id="own-games" style="display: flex; flex-direction: column; align-items: center;">
+      <h2>MY GAMES</h2>
+      <% @user.games.each do |game|%>
+      <div style="background-color: white; box-shadow: -3px 3px 3px #363062; border-radius: 3px; margin: 5px; width: 25vw; height: 150px; display: flex; align-content: space-around; flex-direction: column; align-items: center; padding: 5px 10px 0 0;">
+        <h4><%= game.title %></h4>
+        <p>Platform: <%= game.console %></p>
+        <p>Daily rent price: R$<%= game.daily_rent %>,00</p>
+        <% game.available = game.rents.empty? %>
+        <p>Available? <%= game.available ? "YES" : "NO" %></p>
+      </div>
+      <%end%>
+    </div>
 
+    <div id="rented-games" style="display: flex; flex-direction: column; align-items: center;">
+      <h2>RENTED</h2>
+      <% @user.games.each do |game|%>
+        <% if !game.rents.empty? %>
+          <div style="background-color: white; box-shadow: 0px 3px 3px #363062; border-radius: 3px; margin: 5px; width: 25vw; height: 150px; display: flex; flex-direction: column; align-items: center; padding: 5px 10px 0 0;">
+            <h4><%= game.title %></h4>
+            <p><%= "Renter ID: #{game.rents[0].user_id}" %></p>
+            <p><%= "Renter Nickname: #{game.rents[0].user.username}" %></p>
+            <div style="width: 380px; display: flex; justify-content: space-around; align-items: center;">
+              <p>From: <%=  game.rents[0].start_date.to_s.split(" ")[0] %></p>
+              <p>Until: <%=  game.rents[0].end_date.to_s.split(" ")[0] %></p>
+            </div>
+          </div>
+
+        <%end%>
+      <%end%>
+    </div>
+
+    <div id="rented-games" style="display: flex; flex-direction: column; align-items: center;">
+      <h2>RENTED BY ME</h2>
+      <% @rents.each do |rent|%>
+        <div style="background-color: white; box-shadow: 3px 3px 3px #363062; border-radius: 3px; margin: 5px; width: 25vw; height: 150px; display: flex; flex-direction: column; align-items: center; padding: 5px 10px 0 0;">
+          <h4><%=  rent.game.title%></h4>
+          <p>Platform: <%=  rent.game.console%></p>
+          <p>OWNER: <%=  rent.game.user.username%></p>
+
+          <div style="width: 380px; display: flex; justify-content: space-around; align-items: center;">
+            <p>From: <%=  rent.start_date.to_s.split(" ")[0] %></p>
+            <p>Until: <%=  rent.end_date.to_s.split(" ")[0] %></p>
+          </div>
+        </div>
+      <%end%>
+    </div>
+
+  </div>
 </div>
-<%end%>
-
-<br>
-<h2>RENTS</h2>
-<% @rents.each do |rent|%>
-<div style="border: 1px solid black; border-radius: 3px; margin: 3px; width: 400px">
-<p>TITLE: <%=  rent.game.title%></p>
-<p>OWNER: <%=  rent.game.user.username%></p>
-</div>
-<%end%>
