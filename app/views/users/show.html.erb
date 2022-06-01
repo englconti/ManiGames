@@ -5,6 +5,7 @@
 <% @user.games.each do |game|%>
 <div style="border: 1px solid black; border-radius: 3px; margin: 3px; width: 400px">
 <p><%=  game.title%></p>
+<p><img src="<%=  game.gamecover%>" alt="" style="width: 350px; height: auto"></p>
 <p>Available? <%= game.available ? "YES" : "NO" %></p>
 
 
