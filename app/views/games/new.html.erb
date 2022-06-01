@@ -4,7 +4,10 @@
     <%= f.input :title %>
     <%= f.input :brand %>
     <%= f.input :console %>
-    <%= f.input :released_year %>
+    <%= f.input :gamecover, label: "Game Cover Image", placeholder: "Insert a gamecover url" %>
+    <%= f.input :daily_rent, placeholder: "How much would you charge for 1 day of rent" %>
+    <%= f.input :min_rent_period, label: "Minimum Rent Period", placeholder: "No. of days" %>
+    <%= f.input :released_year, placeholder: "AAAA" %>
     <%= f.button :submit, class: "btn btn-primary" %>
   <% end %>
 
