@@ -76,7 +76,8 @@ counter = 1
 end
 puts "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-"
 puts "Finished"
-# LEO's seed file - End <-
+# LEO's seed file - END <-
+
 # require 'faker'
 
 puts "Cleaning database"
