@@ -1,2 +1,14 @@
 <h1>Rents#new</h1>
 <p>Find me in app/views/rents/new.html.erb</p>
+<h2>NEW RENT PAGE</h2>
+<ul style="margin: 0 30vw 2vh 2vw;">
+  <li>Game: <%= @game.title %></li>
+  <li>Owner: <%= @game.user.username %></li>
+  <li>Daily rent price: R$<%= @game.daily_rent %>,00</li>
+</ul>
+
+<div id="form_box" style="margin: 0 30vw 0 2vw; border: 1px solid black; border-radius: 5px; padding: 10px;>
+  <%= render 'form', array: [@game, @rent] %>
+
+  <%= link_to 'Back', games_path %>
+</div>

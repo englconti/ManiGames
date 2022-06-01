@@ -2,20 +2,21 @@ class RentsController < ApplicationController
   before_action :set_rent, only: %i[show edit update]
 
   def new
+    @game = Game.find(params[:game_id])
     @rent = Rent.new
   end
 
   def create
     @rent = Rent.new(rent_params)
 
-    # Calculo do preço do Rent - *** VERIFICAR(Depois de pronto criar um método específico para isso.)
-    @rent.price = (@rent.end_date - @rent.start_date) * @rent.game.daily_rent
+    @rent.game = Game.find(params[:game_id])
+    @rent.price = (@rent.end_date - @rent.start_date).to_i * @rent.game.daily_rent
 
     if @rent.save
       # Verificar essa rota para user_path(@rent.user) -> A ideia é direcionar o usuário para sua página inicial após fazer a reserva.
       redirect_to user_path(@rent.user), notice: 'Rent was successfully created.'
     else
-      # Estou na dúvida do que é esse comando.
+      # Render é diferent de redirect_to porque ele não atualiza a página. Dessa forma o usuário não perde as informações digitadas no formulário.
       render :new
     end
   end
@@ -24,7 +25,21 @@ class RentsController < ApplicationController
 
   def edit; end
 
-  def update; end
+  def update
+    # Foi decidido que o owner não poderá escolher se aceita ou não a proposta de aluguel.
+    # A partir do momento que o renter fez a solicitação de aluguel o jogo fica indisponível durante as datas solicitadas.
+    # A menos que o jogo já tenha sido reservado para aquele periodo.
+    # 1. rent.game.available = false (para o periodo informado (rent.end_date - rent.start_date))
+
+    # Criar uma regra para verificar se as datas estão disponíveis para aluguel
+    dates_validation = true
+
+    if @rent.update(rent_params) & dates_validation
+      redirect_to @rent, notice: 'Rent was successfully updated.'
+    else
+      render :edit
+    end
+  end
 
   private
 
