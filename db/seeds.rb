@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-rents_upgrade
+# rents_upgrade
 # LEO's seed file - Start ->
 
 require 'faker'
@@ -77,7 +77,7 @@ end
 puts "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-"
 puts "Finished"
 # LEO's seed file - End <-
-require 'faker'
+# require 'faker'
 
 puts "Cleaning database"
 
@@ -92,7 +92,7 @@ puts 'Creating sample: Users -> Games -> Rents '
 10.times do
   User.create(
     username: %w[Ze Ale Leo Cela Ju Peu Dan Edu Mia Lala].sample,
-    email: %w[Ze@lalala.com Ale@lalala.com Leo@lalala.com Cela@lalala.com Ju@lalala.com Peu@lalala.com Dan@lalala.com\n
+    email: %w[Ze@lalala.com Ale@lalala.com Leo@lalala.com Cela@lalala.com Ju@lalala.com Peu@lalala.com Dan@lalala.com \n
               Edu@lalala.com Mia@lalala.com Lala@lalala.com].sample,
     password: (10_000_000...11_000_000).to_a.sample
   )
@@ -118,4 +118,4 @@ end
   )
 end
 
-puts "Finished" master
+puts "Finished"
