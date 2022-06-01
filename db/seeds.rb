@@ -45,10 +45,11 @@ counter = 1
       title: Faker::Game.title,
       genre: Faker::Game.genre,
       console: ["PS4", "XBOX", "Gameboy", "SNES"].sample,
-      user: User.find(counter),
+      user: User.find(1),
       daily_rent: [10, 5, 8, 2, 12].sample,
       released_year: (1980..2022).to_a.sample,
-      min_rent_period: (4..10).to_a.sample
+      min_rent_period: (4..10).to_a.sample,
+      brand: ["SONY", "NINTENDO"].sample
     )
     puts "  Game: #{game.title} , added!"
   end
