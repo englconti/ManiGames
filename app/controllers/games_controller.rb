@@ -6,6 +6,14 @@ class GamesController < ApplicationController
 
   def show; end
 
+  def new
+    @game = Game.new
+  end
+
+  def create
+    @game = Game.new
+  end
+
   private
 
   def set_game

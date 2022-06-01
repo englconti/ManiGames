@@ -1,0 +1,12 @@
+<h1>Let's Add a cool Game!</h1>
+
+  <%= simple_form_for @game do |f| %>
+    <%= f.input :title %>
+    <%= f.input :brand %>
+    <%= f.input :console %>
+    <%= f.input :released_year %>
+    <%= f.button :submit, class: "btn btn-primary" %>
+  <% end %>
+
+
+<%= link_to "All Games", games_path %>
