@@ -9,8 +9,11 @@ class RentsController < ApplicationController
   def create
     @rent = Rent.new(rent_params)
 
-    @rent.game = Game.find(params[:game_id])
+    @game = Game.find(params[:game_id])
+    @rent.game = @game
     @rent.price = (@rent.end_date - @rent.start_date).to_i * @rent.game.daily_rent
+
+    @rent.user = current_user
 
     if @rent.save
       # Verificar essa rota para user_path(@rent.user)
