@@ -1,9 +1,12 @@
 <h1>Pick Your Game!</h1>
 
+<%= link_to 'Add Game', new_game_path %>
 
-  <% @games.each do |game|%>
-    <div class="container">
+  <div class="container">
+    <% @games.each do |game|%>
+      <div style="margin: 10px; text-align: center">
       <%= game.title %>
-      <img src="<%= game.gamecover %>" alt="">
-    </div>
-  <% end %>
+      <%= link_to image_tag("#{game.gamecover}", style: 'width: 600px; height: auto'), game_path(game) %>
+      </div>
+    <% end %>
+  </div>

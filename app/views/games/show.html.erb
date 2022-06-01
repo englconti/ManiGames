@@ -1,0 +1,9 @@
+
+<h1><%= @game.title %></h1>
+<img src="<%= @game.gamecover %>" alt="" style="width: 300px; height: auto">
+<p>Brand: <%= @game.brand %></p>
+<p>Genre: <%= @game.genre %></p>
+<p>Console: <%= @game.console %></p>
+<p>Year of release: <%= @game.released_year %></p>
+
+<%= link_to "All Games", games_path %>
