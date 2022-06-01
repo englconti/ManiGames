@@ -1,12 +1,16 @@
 <h1>Pick Your Game!</h1>
 
-<%= link_to 'Add Game', new_game_path %>
+<%= link_to 'Add Game', new_game_path, class: "btn-gradient" %>
 
-  <div class="container">
-    <% @games.each do |game|%>
-      <div style="margin: 10px; text-align: center">
-      <%= game.title %>
-      <%= link_to image_tag("#{game.gamecover}", style: 'width: 600px; height: auto'), game_path(game) %>
+<% @games.each do |game|%>
+  <div class="card-trip">
+    <%= link_to image_tag("#{game.gamecover}"), game_path(game), class: "card-trip > img" %>
+    <div class="card-trip-infos">
+      <div>
+        <h2><%= game.title %></h2>
+        <p><%= link_to "Rent game", new_game_rent_path(game), class: "btn-gradient" %></p>
       </div>
-    <% end %>
+      <h2 class="card-trip-pricing"><%= game.daily_rent %></h2>
+    </div>
   </div>
+<% end %>
