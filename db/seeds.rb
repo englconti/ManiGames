@@ -48,7 +48,8 @@ counter = 1
       user: User.find(counter),
       daily_rent: [10, 5, 8, 2, 12].sample,
       released_year: (1980..2022).to_a.sample,
-      min_rent_period: (4..10).to_a.sample
+      min_rent_period: (4..10).to_a.sample,
+      brand: ["SONY", "NINTENDO"].sample
     )
     puts "  Game: #{game.title} , added!"
   end

@@ -1,5 +1,5 @@
 <h1>Let's Add a cool Game!</h1>
-
+<div style="margin:5vh auto; width: 60vw;">
   <%= simple_form_for @game do |f| %>
     <%= f.input :title %>
     <%= f.input :brand %>
@@ -8,8 +8,10 @@
     <%= f.input :daily_rent, placeholder: "How much would you charge for 1 day of rent" %>
     <%= f.input :min_rent_period, label: "Minimum Rent Period", placeholder: "No. of days" %>
     <%= f.input :released_year, placeholder: "AAAA" %>
+    <%= f.input :address, placeholder: "Input the game address" %>
+
     <%= f.button :submit, class: "btn btn-primary" %>
   <% end %>
-
-
-<%= link_to "All Games", games_path %>
+  <br>
+  <%= button_to "Go back to available games", games_path, method: :get %>
+</div>
