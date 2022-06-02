@@ -1,18 +1,29 @@
-<h1>Pick Your Game!</h1>
 
-<%= link_to 'Add Game', new_game_path, class: "btn-gradient" %>
+
+<div style="display: flex; justify-content:space-between; margin: 20px auto; width: 80vw;">
+  <h1>Game List</h1>
+  <input type="text" id="search-bar" placeholder="Search for a game here" style="width: 60vw;">
+</div>
 
 <% @games.each do |game| %>
   <div class="card-trip">
-    <%= link_to image_tag("#{game.gamecover}"), game_path(game), class: "card-trip > img" %>
+
+    <img src="https://cdn.shopify.com/s/files/1/2650/0192/products/2018-03-31_16.34.13_1200x1200.jpg?v=1522620678">
     <div class="card-trip-infos">
+      <h2><%= game.title %></h2>
       <div>
-        <h2><%= game.title %></h2>
-        <p>
-          <%= link_to "Rent game", new_game_rent_path(game), class: "btn-gradient" %>
-        </p>
+        <h5>Platform: <%= game.console %></h5>
+        <h5>Genre: <%= game.genre %></h5>
+        <h5>Brand: <%= game.address %></h5>
+        <h5>Address: <%= game.address %></h5>
       </div>
-      <h2 class="card-trip-pricing"><%= "$ #{game.daily_rent}" %></h2>
+    </div>
+
+    <div id="card-price-rent-btn">
+      <h2 class="card-trip-pricing">Daily rent price: R$<%= game.daily_rent %>,00</h2>
+      <p><%= link_to "Rent game", new_game_rent_path(game), class: "btn-gradient btn-rent-game" %></p>
     </div>
   </div>
 <% end %>
+
+<!-- link_to image_tag("#{game.gamecover}"), game_path(game), class: "card-trip-img" -->

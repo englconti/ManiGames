@@ -1,4 +1,17 @@
-<h1>Mani Games</h1>
-<p>Find the game you love and rent it from a friend or a stranger</p>
+<div id="home-page">
+  <h1>Mani Games</h1>
+  <p>Find the game you love and rent it from a friend or a stranger</p>
 
-<h5><%= link_to "Show Games", games_path, class: "btn-gradient" %></h5>
+  <h5><%= link_to "Show Games", games_path, class: "btn-gradient" %></h5>
+
+  <div id="home-page-map-div">
+    <h2>Find OLD but GOLD games anywhere!</h2>
+
+    <div id="home-page-global-map"
+      data-controller="mapbox"
+      data-mapbox-markers-value="<%= @markers.to_json %>"
+      data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
+  </div>
+
+</div>
