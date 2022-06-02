@@ -2,15 +2,17 @@
 
 <%= link_to 'Add Game', new_game_path, class: "btn-gradient" %>
 
-<% @games.each do |game|%>
+<% @games.each do |game| %>
   <div class="card-trip">
     <%= link_to image_tag("#{game.gamecover}"), game_path(game), class: "card-trip > img" %>
     <div class="card-trip-infos">
       <div>
         <h2><%= game.title %></h2>
-        <p><%= link_to "Rent game", new_game_rent_path(game), class: "btn-gradient" %></p>
+        <p>
+          <%= link_to "Rent game", new_game_rent_path(game), class: "btn-gradient" %>
+        </p>
       </div>
-      <h2 class="card-trip-pricing"><%= game.daily_rent %></h2>
+      <h2 class="card-trip-pricing"><%= "$ #{game.daily_rent}" %></h2>
     </div>
   </div>
 <% end %>
