@@ -1,19 +1,61 @@
 // Specific CSS for your home-page
+@import url('https://fonts.googleapis.com/css2?family=Kumar+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Play&display=swap');
+
+body {
+  background-color: black;
+}
+
 #home-page {
+  background-color: black;
+}
+
+#banner-img {
+  position: relative;
+  display: flex;
+  width: auto;
+  height: 800px;
+  background-image: url(https://res.cloudinary.com/guijafrone/image/upload/v1654169985/MANI%20GAMES/controle_nintendo_nav-bar_nh3j4r.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+#banner_text {
+  position: absolute;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.698);
-  color: rgba(232, 221, 221, 0.618);
+  text-align: center;
+  justify-content: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 
+  h1 {
+    font-family: 'Kumar One', cursive;
+    font-size: 100px;
+    font-weight: bolder;
+    color: white;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  }
+
+  p {
+    font-size: 20px;
+    color: white;
+    font-weight: lighter;
+    font-family: 'Play', sans-serif;
+    opacity: .7;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  }
 }
 
 #home-page-map-div {
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  border: 5px solid rgba(232, 221, 221, 0.618);
+  color: white;
+  border: 5px solid white;
   border-radius: 10px;
   padding: 30px;
   margin: 30px 0;
@@ -24,4 +66,32 @@
   height: 40vh;
   border-radius: 10px;
   margin: 20px 0;
+}
+
+h1 {
+  color: white;
+}
+
+.footer {
+  background: black;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100px;
+  padding: 0px 50px;
+  color: white;
+}
+.footer-links {
+  display: flex;
+  align-items: center;
+}
+.footer-links a {
+  color: white;
+  opacity: 0.15;
+  text-decoration: none;
+  font-size: 20px;
+  padding: 0px 10px;
+}
+.footer-links a:hover {
+  opacity: 1;
 }
