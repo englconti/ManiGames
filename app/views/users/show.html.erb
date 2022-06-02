@@ -1,5 +1,6 @@
 <div style="background-color:#827397; color: #363062">
   <h1>Hello, <%= @user.username %> !</h1>
+
   <br>
 
   <div id="games-list" style="box-shadow: -3px 3px 10px #363062; background-color:#E9D5CA;  border-radius: 5px; padding: 30px; display:flex; justify-content: space-around; width: 90vw; margin: 0 auto;">
@@ -15,6 +16,7 @@
           <p>Available? <%= game.available ? "YES" : "NO" %></p>
         </div>
       <%end%>
+      <%= link_to 'Add a game!', new_game_path, class: "btn-gradient", id: "btn-add-game" %>
     </div>
 
     <div id="rented-games" style="display: flex; flex-direction: column; align-items: center;">
