@@ -35,7 +35,6 @@ class GamesController < ApplicationController
   def destroy
     if @game.destroy
       redirect_to user_path(current_user)
-    # @user = @game.user
     end
   end
 
