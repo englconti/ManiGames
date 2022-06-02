@@ -1,5 +1,9 @@
-<div style="background-color:#827397; color: #363062">
-  <h1>Hello, <%= @user.username %> !</h1>
+<div class="banner">
+
+  <div>
+    <img src="https://kitt.lewagon.com/placeholder/users/ssaunier" alt="">
+    <h3>Player: <%= @user.username.upcase %></h3>
+  </div>
 
   <br>
 
@@ -45,6 +49,7 @@
           <h4><%=  rent.game.title%></h4>
           <p>Platform: <%=  rent.game.console%></p>
           <p>OWNER: <%=  rent.game.user.username%></p>
+          <p>TOTAL: $ <%=  rent.price %></p>
           <div style="width: 380px; display: flex; justify-content: space-around; align-items: center;">
             <p>From: <%=  rent.start_date.to_s.split(" ")[0] %></p>
             <p>Until: <%=  rent.end_date.to_s.split(" ")[0] %></p>
