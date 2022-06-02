@@ -37,7 +37,7 @@ puts "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
 puts "Populating GAMES"
 puts "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-"
-counter = 1
+counter = User.last.id - 2
 3.times do
   puts "User id:#{counter}, username: #{User.find(counter).username}"
   5.times do
@@ -50,7 +50,7 @@ counter = 1
       released_year: (1980..2022).to_a.sample,
       min_rent_period: (4..10).to_a.sample,
       brand: ["Sony", "Nintendo", "SEGA", "CAPCOM"].sample,
-      address: Faker::Address.city
+      address: ["Uberlandia", "Rio de Janeiro", "Cartagena", "Sinop, Mato Grosso", "Recife", "Buenos Aires", "Campina Grande", "Sao Paulo"].sample
     )
     puts "  Game: #{game.title} , added!"
   end
@@ -61,7 +61,7 @@ puts "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
 puts "Populating RENTS"
 puts "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-"
-counter = 1
+counter = User.last.id - 2
 3.times do
   3.times do
     rent = Rent.new(

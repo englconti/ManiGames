@@ -1,8 +1,23 @@
 
 
-<div style="display: flex; justify-content:space-between; margin: 20px auto; width: 80vw;">
-  <h1>Game List</h1>
-  <input type="text" id="search-bar" placeholder="Search for a game here" style="width: 60vw;">
+<div style="display: flex; justify-content:space-between; align-items:center; margin: 20px auto; width: 80vw;">
+
+  <h1><%= link_to "Game List", games_path, style:"color:black"%></h1>
+
+  <div>
+    <%= form_tag games_path, id: "search-bar", method: :get do %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+        placeholder: "Find a game" %>
+  </div>
+
+  <div>
+    <%= submit_tag "Search", class: "btn btn-primary" %>
+  </div>
+
+<% end %>
+
 </div>
 
 <% @games.each do |game| %>
@@ -14,7 +29,7 @@
       <div>
         <h5>Platform: <%= game.console %></h5>
         <h5>Genre: <%= game.genre %></h5>
-        <h5>Brand: <%= game.address %></h5>
+        <h5>Brand: <%= game.brand %></h5>
         <h5>Address: <%= game.address %></h5>
       </div>
     </div>

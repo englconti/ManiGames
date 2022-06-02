@@ -2,7 +2,7 @@ class GamesController < ApplicationController
   before_action :set_game, only: %i[show edit update destroy]
 
   def index
-    @games = Game.all
+    @games = params[:query].present? ? Game.search_by_all(params[:query]) : Game.all
   end
 
   def show; end
