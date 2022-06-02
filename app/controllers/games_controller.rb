@@ -26,7 +26,7 @@ class GamesController < ApplicationController
 
   def update
     if @game.update(game_params)
-      redirect_to @game, notice: 'Game successfully updated.'
+      redirect_to user_path(current_user), notice: 'Game successfully updated.'
     else
       render :edit
     end
