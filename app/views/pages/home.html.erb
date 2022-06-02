@@ -1,17 +1,39 @@
 <div id="home-page">
-  <h1>Mani Games</h1>
-  <p>Find the game you love and rent it from a friend or a stranger</p>
+  <div id="banner-img">
 
-  <h5><%= link_to "Show Games", games_path, class: "btn-gradient" %></h5>
+  <div id="banner_text">
+    <h1>Mani Games</h1>
+    <p>Rent the games that you love and make money renting the ones that you don't play anymore!</p>
+  </div>
+
+  </div>
 
   <div id="home-page-map-div">
-    <h2>Find OLD but GOLD games anywhere!</h2>
+
+  <h5><%= link_to "Show Games", games_path, class: "btn-home" %></h5>
+
+    <h2>Find the nearest games right now!</h2>
 
     <div id="home-page-global-map"
       data-controller="mapbox"
       data-mapbox-markers-value="<%= @markers.to_json %>"
       data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
     </div>
+  </div>
+
+</div>
+
+
+
+<div class="footer">
+  <div class="footer-copyright">
+    This project was created by the Batch's #884 students
+  </div>
+  <div class="footer-links">
+    <a href="https://github.com/guilhermejafrone" target="_blank"><i class="fab fa-github"></i> Guilherme Jafrone</a>
+    <a href="https://github.com/kitodann" target="_blank"><i class="fab fa-github"></i> Alexandre Vieira</a>
+    <a href="https://github.com/englconti" target="_blank"><i class="fab fa-github"></i> Leonardo Conti</a>
+    <a href="https://github.com/JPVALLADARES" target="_blank"><i class="fab fa-github"></i> Jose Paulo Valladares</a>
   </div>
 
 </div>

@@ -21,6 +21,22 @@
   text-align: center;
 }
 
+.btn-home {
+  color: white;
+  padding: 8px 24px;
+  border-radius: 4px;
+  font-weight: bold;
+  background: linear-gradient(#cc2b5e, #753a88);
+  transition: background 0.5s ease;
+  border: 1px solid #0F60C4;
+  text-decoration: none;
+}
+
+.btn-home:hover {
+  background: linear-gradient(#753a88, #cc2b5e);
+  color: white;
+}
+
 // .btn-rent-game {
 //   float: right;
 // }
