@@ -8,12 +8,13 @@
     <div id="my-games" style="display: flex; flex-direction: column; align-items: center;">
       <h2>MY GAMES</h2>
       <% @user.games.each do |game|%>
-        <div style="background-color: white; box-shadow: -3px 3px 3px #363062; border-radius: 3px; margin: 5px; width: 25vw; height: 150px; display: flex; align-content: space-around; flex-direction: column; align-items: center; padding: 5px 10px 0 0;">
+        <div style="background-color: white; box-shadow: -3px 3px 3px #363062; border-radius: 3px; margin: 25px; width: 25vw; height: 150px; display: flex; align-content: space-around; flex-direction: column; align-items: center; padding: 5px 10px 0 0;">
           <h4><%= game.title %></h4>
           <p>Platform: <%= game.console %></p>
           <p>Daily rent price: R$<%= game.daily_rent %>,00</p>
           <% game.available = game.rents.empty? %>
           <p>Available? <%= game.available ? "YES" : "NO" %></p>
+          <p><%= link_to "Delete game", game_path(game), method: 'DELETE', data: { confirm: "Are you sure?" }, class: "btn-gradient" %></p>
         </div>
       <%end%>
       <%= link_to 'Add a game!', new_game_path, class: "btn-gradient", id: "btn-add-game" %>

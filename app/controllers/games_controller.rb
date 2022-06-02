@@ -1,5 +1,6 @@
 class GamesController < ApplicationController
-  before_action :set_game, only: [:show]
+  before_action :set_game, only: %i[show edit update destroy]
+
   def index
     @games = Game.all
   end
@@ -18,6 +19,23 @@ class GamesController < ApplicationController
       redirect_to user_path(current_user), notice: "Game successfully added"
     else
       render :new
+    end
+  end
+
+  def edit; end
+
+  def update
+    if @game.update(game_params)
+      redirect_to @game, notice: 'Game successfully updated.'
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    if @game.destroy
+      redirect_to user_path(current_user)
+    # @user = @game.user
     end
   end
 
