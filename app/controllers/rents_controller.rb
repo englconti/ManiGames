@@ -4,6 +4,9 @@ class RentsController < ApplicationController
   def new
     @game = Game.find(params[:game_id])
     @rent = Rent.new
+
+    # adding for geocode:
+    @marker = [{ lat: @game.latitude, lng: @game.longitude }]
   end
 
   def create
