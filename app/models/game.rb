@@ -15,7 +15,7 @@ class Game < ApplicationRecord
   # added for search
   include PgSearch::Model
   pg_search_scope :search_by_all,
-                  against: %i[title console genre brand address],
+                  against: { title: "A", console: "B", genre: "D", brand: "C", address: "A" },
                   using: {
                     tsearch: { prefix: true } # <-- now `superman batm` will return something!
                   }
