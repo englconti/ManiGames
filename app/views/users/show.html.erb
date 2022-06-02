@@ -49,6 +49,7 @@
             <p>From: <%=  rent.start_date.to_s.split(" ")[0] %></p>
             <p>Until: <%=  rent.end_date.to_s.split(" ")[0] %></p>
           </div>
+          <p><%= link_to "Cancel Rent", rent_path(rent), method: 'DELETE', data: { confirm: "Are you sure?" }, class: "btn-gradient" %></p>
         </div>
       <%end%>
     </div>

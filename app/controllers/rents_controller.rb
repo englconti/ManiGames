@@ -1,5 +1,5 @@
 class RentsController < ApplicationController
-  before_action :set_rent, only: %i[show edit update]
+  before_action :set_rent, only: %i[show edit update destroy]
 
   def new
     @game = Game.find(params[:game_id])
@@ -15,17 +15,22 @@ class RentsController < ApplicationController
     @game = Game.find(params[:game_id])
     @rent.game = @game
     @rent.price = (@rent.end_date - @rent.start_date).to_i * @rent.game.daily_rent
-
+    rent_period = (@rent.end_date.day - @rent.start_date.day).to_i
     @rent.user = current_user
 
-    if @rent.save
-      # Verificar essa rota para user_path(@rent.user)
-      # A ideia é direcionar o usuário para sua página inicial após fazer a reserva.
-      redirect_to user_path(@rent.user), notice: 'Rent was successfully created.'
-    else
-      # Render é diferent de redirect_to porque ele não atualiza a página.
-      # Dessa forma o usuário não perde as informações digitadas no formulário.
+    if rent_period < @game.min_rent_period
+      flash.alert = "The minimum amount of days for this game is #{@game.min_rent_period}"
       render :new
+    else
+      if @rent.save
+        # Verificar essa rota para user_path(@rent.user)
+        # A ideia é direcionar o usuário para sua página inicial após fazer a reserva.
+        redirect_to user_path(@rent.user), notice: 'Rent was successfully created.'
+      else
+        # Render é diferent de redirect_to porque ele não atualiza a página.
+        # Dessa forma o usuário não perde as informações digitadas no formulário.
+        render :new
+      end
     end
   end
 
@@ -45,6 +50,12 @@ class RentsController < ApplicationController
       redirect_to @rent, notice: 'Rent was successfully updated.'
     else
       render :edit
+    end
+  end
+
+  def destroy
+    if @rent.destroy
+      redirect_to user_path(current_user)
     end
   end
 
