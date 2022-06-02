@@ -26,10 +26,10 @@ puts "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 3.times do
   poke = Faker::Games::Pokemon.name
   new_user = User.create(
-    username: poke,
+    username: poke.downcase,
     password: "Apolo1234",
-    email: "#{poke}@gmail.com",
-    role: "renter"
+    email: "#{poke.downcase}@gmail.com",
+    role: ["renter", "owner"].sample
   )
   puts "User #{new_user.id}: #{new_user.username}"
 end
@@ -44,12 +44,13 @@ counter = 1
     game = Game.create(
       title: Faker::Game.title,
       genre: Faker::Game.genre,
-      console: ["PS4", "XBOX", "Gameboy", "SNES"].sample,
+      console: ["PS4", "XBOX", "Gameboy", "SNES", "GBA", "PSONE", "PS2", "PS3", "Xbox One", "DreamCast"].sample,
       user: User.find(counter),
       daily_rent: [10, 5, 8, 2, 12].sample,
       released_year: (1980..2022).to_a.sample,
       min_rent_period: (4..10).to_a.sample,
-      brand: ["SONY", "NINTENDO"].sample
+      brand: ["Sony", "Nintendo", "SEGA", "CAPCOM"].sample,
+      address: Faker::Address.city
     )
     puts "  Game: #{game.title} , added!"
   end
