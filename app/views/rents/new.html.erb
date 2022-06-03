@@ -1,6 +1,6 @@
-<div id="form_box" style="background-color: hsl(0,4%,65%); margin: 5vh 30vw 5vh 2vw; border: 1px solid black; border-radius: 5px; padding: 10px;">
+<div id="rent_form_box">
 
-  <div style="height: 300px;color: black; background-color: hsl(34,30%,91%); border-radius: 5px; display: flex; align-items: center; justify-content: space-around; margin: 0 0 15px 0; border: 3px solid hsl(0,2%,26%)">
+  <div id="upper-rent-container">
         <!--Validation to check if a photo was uploaded before showing it-->
     <% if @game.photo.key.nil? %>
     <%= image_tag("std-img.jpg", class:"rent-page-game-img")  %>
@@ -9,12 +9,12 @@
     <%= cl_image_tag @game.photo.key, class:"rent-page-game-img", crop: :fill %>
     <% end %>
 
-    <h1 style="text-align:center; color: black;"><%= @game.title %></h1>
-    <ul style="margin: 0 ; ">
-      <li>Game title: <%= @game.title %></li>
-      <li>Genre: <%= @game.genre %></li>
-      <li>Released year: <%= @game.released_year %></li>
+    <p id="game-title"><%= @game.title %></p id="game-title">
+    <ul id="game-description-list">
+      <li>Title: <%= @game.title %></li>
       <li>Platform: <%= @game.console %></li>
+      <li>Genre: <%= @game.genre.nil? ? "Not informed" : @game.genre %></li>
+      <li>Released year: <%= @game.released_year %></li>
       <li>Brand: <%= @game.brand %></li>
       <li>Owner: <%= @game.user.username %></li>
       <li>Daily rent price: R$<%= @game.daily_rent %>,00</li>
@@ -30,13 +30,22 @@
       <%= button_to 'Back', games_path, :method => :get, class:"rent-page-back-button" %>
     </div>
 
-    <!--geocoding -->
-    <div id="rent-game-page-map"
-      data-controller="mapbox"
-      data-mapbox-markers-value="<%= @marker.to_json %>"
-      data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+    <div style="width: 30%">
+      <p>Game location: <%= @game.address %></p>
+      <!--geocoding -->
+      <div id="rent-game-page-map"
+        data-controller="mapbox"
+        data-mapbox-markers-value="<%= @marker.to_json %>"
+        data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+      </div>
+    </div>
+
+    <div id="msg-owner"">
+      <p>Write a msg to <%= @game.user.username.capitalize %>:</p>
+      <textarea id="msg-owner-txt-box"></textarea>
+      <%# <input type="text", style="height: 200px"> %>
+      <input value="Send" type="button" class="btn-gradient">
     </div>
 
   </div>
-
 </div>
