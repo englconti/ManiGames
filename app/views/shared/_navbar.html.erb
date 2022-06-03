@@ -1,8 +1,10 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid">
-    <%= link_to "#", class: "navbar-brand" do %>
+    <%= link_to root_path, class: "navbar-brand" do %>
       <%= image_tag "Logo_site-navbar.png"  %>
     <% end %>
+    <h6 style="font-family: 'Press Start 2P', cursive; color: white; font-size: xx-small; margin: 2px 0px 0px 60px;
+    position: absolute">Mani Games</h6>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -24,10 +26,10 @@
           </li>
         <% else %>
           <li class="nav-item">
-            <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+            <%= link_to "Login", new_user_session_path, style: "color: white; text-decoration: none" %>
           </li>
         <% end %>
-        
+
       </ul>
     </div>
   </div>

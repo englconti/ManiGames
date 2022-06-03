@@ -1,19 +1,23 @@
-<%= simple_form_for(@game) do |f| %>
-  <%= f.error_notification %>
-  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+<div id="games-new">
 
-  <div class="form-inputs">
-    <%= f.input :title %>
-    <%= f.input :brand %>
-    <%= f.input :console %>
-    <%= f.input :gamecover, label: "Game Cover Image", placeholder: "Insert a gamecover url" %>
-    <%= f.input :daily_rent, placeholder: "How much would you charge for 1 day of rent" %>
-    <%= f.input :min_rent_period, label: "Minimum Rent Period", placeholder: "No. of days" %>
-    <%= f.input :released_year, placeholder: "AAAA" %>
-    <%= f.input :address, placeholder: "Input the game address" %>
-  </div>
+  <%= simple_form_for(@game) do |f| %>
+    <%= f.error_notification %>
+    <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-  <div class="form-actions" >
-    <%= f.button :submit, class: "btn btn-primary" %>
-  </div>
-<% end %>
+    <div id="add-game">
+      <%= f.input :title %>
+      <%= f.input :brand %>
+      <%= f.input :console %>
+      <!--<%= f.input :gamecover, label: "Game Cover Image", placeholder: "Insert a gamecover url" %>-->
+      <%= f.input :daily_rent, placeholder: "How much would you charge for 1 day of rent" %>
+      <%= f.input :min_rent_period, label: "Minimum Rent Period", placeholder: "No. of days" %>
+      <%= f.input :released_year, placeholder: "AAAA" %>
+      <%= f.input :address, placeholder: "Input the game address" %>
+      <%= f.input :photo, as: :file, label: "Upload a game photo for your game" %>
+    </div>
+
+    <div id="add-game">
+      <%= f.button :submit, class: "btn btn-gradient" %>
+    </div>
+  <% end %>
+</div>
