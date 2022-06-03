@@ -19,4 +19,7 @@ class Game < ApplicationRecord
                   using: {
                     tsearch: { prefix: true } # <-- now `superman batm` will return something!
                   }
+
+  # added for uploading game picture
+  has_one_attached :photo
 end
