@@ -23,6 +23,11 @@
       <%= button_to 'Back', games_path, :method => :get, class:"rent-page-back-button" %>
     </div>
 
+    <!--Validation to check if a photo was uploaded before showing it-->
+    <% unless @game.photo.key.nil? %>
+    <%= cl_image_tag @game.photo.key, height: 300, width: 400, crop: :fill %>
+    <% end %>
+
     <!--geocoding -->
     <div id="rent-game-page-map"
       data-controller="mapbox"
