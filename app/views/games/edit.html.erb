@@ -1,6 +1,9 @@
-<h1>Editing Game: <%= @game.title %></h1>
+<div id="games-new">
 
-<%= render 'form', game: @game %>
+  <h1>Editing Game: <%= @game.title %></h1>
 
-<%= link_to 'Game Details', @game %> |
-<%= link_to 'Back', user_path(current_user) %>
+  <%= render 'form', game: @game %>
+  <div id="add-game">
+    <%= button_to 'Go back to my profile', user_path(current_user), style: "margin-bottom: 15px", method: :get %>
+  </div>
+</div>
