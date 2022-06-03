@@ -1,19 +1,20 @@
 <div id="home-page">
   <div id="banner-img">
 
-  <div id="banner_text">
-    <h1>Mani Games</h1>
-    <p>Rent the games that you love and make money renting the ones that you don't play anymore!</p>
-  </div>
-
+    <div id="banner_text">
+      <h1>Mani Games</h1>
+      <p>Rent the games that you love and make money renting the ones that you don't play anymore!</p>
+    </div>
+    <div style="position: absolute; margin: 60px">
+      <h5> <%= link_to "START", new_user_session_path, class: "btn-home" %></h5>
+    </div>
+    <div style="position: absolute; margin: -125px">
+      <h5> <%= link_to "SHOWGAMES", games_path, class: "btn-home" %></h5>
+    </div>
   </div>
 
 
   <div id="home-page-map-div">
-
-
-
-  <h5> <%= link_to "Show Games", games_path, class: "btn-home" %></h5>
 
 
     <h2>Find the nearest games right now!</h2>
