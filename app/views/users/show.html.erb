@@ -1,3 +1,4 @@
+
 <div id="user_view">
   <h1>Hello, <%= @user.username.capitalize %>!</h1>
 
@@ -8,19 +9,22 @@
     <div id="my-games">
       <h2>MY GAMES</h2>
       <% @user.games.each do |game|%>
+
         <div id="my-games-card">
           <h4><%= game.title %></h4>
           <p>Platform: <%= game.console %></p>
           <p>Daily rent price: R$<%= game.daily_rent %>,00</p>
           <% game.available = game.rents.empty? %>
           <p>Available? <%= game.available ? "YES" : "NO" %></p>
+          <p><%= link_to "Edit game", edit_game_path(game), class: "btn-gradient" %></p>
+          <p><%= link_to "Delete game", game_path(game), method: 'DELETE', data: { confirm: "Are you sure?" }, class: "btn-gradient" %></p>
         </div>
       <%end%>
       <%= link_to 'Add a game!', new_game_path, class: "btn-gradient", id: "btn-add-game" %>
     </div>
 
     <div id="rented-games" style="display: flex; flex-direction: column; align-items: center;">
-      <h2>RENTED</h2>
+      <h2>MY GAMES RENTED</h2>
       <% @user.games.each do |game|%>
         <% if !game.rents.empty? %>
           <div id="rented-games-card">
@@ -38,15 +42,18 @@
 
     <div id="rented-games-by-me">
       <h2>RENTED BY ME</h2>
+
       <% @rents.each do |rent|%>
         <div id="rented-games-by-me-card">
           <h4><%=  rent.game.title%></h4>
           <p>Platform: <%=  rent.game.console%></p>
           <p>OWNER: <%=  rent.game.user.username%></p>
+          <p>TOTAL: $ <%=  rent.price %></p>
           <div style="width: 380px; display: flex; justify-content: space-around; align-items: center;">
             <p>From: <%=  rent.start_date.to_s.split(" ")[0] %></p>
             <p>Until: <%=  rent.end_date.to_s.split(" ")[0] %></p>
           </div>
+          <p><%= link_to "Cancel Rent", rent_path(rent), method: 'DELETE', data: { confirm: "Are you sure?" }, class: "btn-gradient" %></p>
         </div>
       <%end%>
     </div>

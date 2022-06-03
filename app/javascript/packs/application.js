@@ -15,7 +15,6 @@ ActiveStorage.start()
 import "controllers"
 import "bootstrap"
 
-
 // added by Leo for date-picking
 
 import { Application } from 'stimulus'

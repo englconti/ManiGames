@@ -22,6 +22,13 @@
 
 .btn-home:hover i {
   transform: translateX(3px);
+
+#btn-add-game {
+  height: 50px;
+  margin-top: 50px;
+  width: 15vw;
+  text-align: center;
+
 }
 
 .btn-home {
@@ -39,3 +46,48 @@
   background: linear-gradient(#753a88, #cc2b5e);
   color: white;
 }
+
+.rent-page-back-button {
+  font-size:15px;
+  font-family:Arial;
+  width:200px;
+  height:50px;
+  border-width:1px;
+  color:#fff;
+  border-color:#241d13;
+  font-weight:bold;
+  border-top-left-radius:0px;
+  border-top-right-radius:0px;
+  border-bottom-left-radius:0px;
+  border-bottom-right-radius:0px;
+  box-shadow:inset 0px 34px 0px -15px #b54b3a;
+  text-shadow:inset 0px -1px 0px #7a2a1d;
+  background:#a73f2d;
+
+  &:hover {
+    background: #b34332
+  }
+}
+
+.rent-page-create-button {
+  font-size:15px;
+  font-family:Arial;
+  width:200px;
+  height:50px;
+  border-width:1px;
+  color:#fff;
+  border-color:#3b6e22;
+  font-weight:bold;
+  border-top-left-radius:0px;
+  border-top-right-radius:0px;
+  border-bottom-left-radius:0px;
+  border-bottom-right-radius:0px;
+  box-shadow:inset 0px 1px 0px 0px #9acc85;
+  background:linear-gradient(#74ad5a, #68a54b);
+  margin: 15px 0;
+
+  &:hover {
+    background: linear-gradient(#68a54b, #74ad5a);
+  }
+}
+

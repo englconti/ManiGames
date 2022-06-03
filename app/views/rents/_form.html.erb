@@ -4,22 +4,23 @@
 
   <div class="form-inputs" style="height: 130px; display: flex; flex-direction: column; justify-content: space-around; align-items: flex-start;">
 
-    <h5>Enter the desired renting dates:</h5>
+    <h3>Renting dates:</h3>
 
     <%= f.text_field :start_date, placeholder: "Start date", data: {
       controller: "flatpickr",
       flatpickr_date_format: "Y-m-d",
-      flatpickr_min_date: Time.zone.now
-    } %>
+      flatpickr_min_date: Time.zone.now,
+      flatpickr_allow_input: true
+    }, required: true %>
 
     <%= f.text_field :end_date, placeholder: "End date", data: {
       controller: "flatpickr",
       flatpickr_date_format: "Y-m-d",
-      flatpickr_min_date: Time.zone.now
-    } %>
+      flatpickr_min_date: Time.zone.now,
+      flatpickr_allow_input: true
+    }, required: true %>
   </div>
 
-  <div class="form-actions" style="border: 1px solid black; align-text: center; border-radius: 5px; width: 130px; background: #b4dfc0; margin: 10px 0px;">
-    <%= f.button :submit %>
-  </div>
+  <%= f.button :submit, class:"rent-page-create-button" %>
+
 <% end %>

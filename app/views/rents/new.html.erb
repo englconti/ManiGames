@@ -1,10 +1,15 @@
-<h1>Rents#new</h1>
-<p>Find me in app/views/rents/new.html.erb</p>
-<div id="form_box" style="margin: 0 30vw 0 2vw; border: 1px solid black; border-radius: 5px; padding: 10px;">
+<div id="form_box" style="background-color: hsl(0,4%,65%); margin: 5vh 30vw 5vh 2vw; border: 1px solid black; border-radius: 5px; padding: 10px;">
 
-  <div style="background-color: white; border-radius: 5px; display: flex; align-items: center; justify-content: space-around; margin: 0 0 15px 0;">
-    <img style="border: 1px solid red; width: 200px; border-radius: 5px" src="https://images.tcdn.com.br/img/img_prod/649042/mario_kart_double_dash_usado_nintendo_gamecube_4861_1_20200505182319.jpg">
-    <h1 style="text-align:center;"><%= @game.title %></h1>
+  <div style="height: 300px;color: black; background-color: hsl(34,30%,91%); border-radius: 5px; display: flex; align-items: center; justify-content: space-around; margin: 0 0 15px 0; border: 3px solid hsl(0,2%,26%)">
+        <!--Validation to check if a photo was uploaded before showing it-->
+    <% if @game.photo.key.nil? %>
+    <%= image_tag("std-img.jpg", class:"rent-page-game-img")  %>
+    <!--<img class="rent-page-game-img" src="https://images.tcdn.com.br/img/img_prod/649042/mario_kart_double_dash_usado_nintendo_gamecube_4861_1_20200505182319.jpg">-->
+    <% else %>
+    <%= cl_image_tag @game.photo.key, class:"rent-page-game-img", crop: :fill %>
+    <% end %>
+
+    <h1 style="text-align:center; color: black;"><%= @game.title %></h1>
     <ul style="margin: 0 ; ">
       <li>Game title: <%= @game.title %></li>
       <li>Genre: <%= @game.genre %></li>
@@ -17,7 +22,21 @@
     </ul>
   </div>
 
-  <!--simple form rendering -->
-  <%= render 'form', array: [@game, @rent] %>
-  <%= button_to 'Back', games_path, :method => :get %>
+  <div class="bottom-rent-container" style="display:flex; justify-content: space-around; align-items:center">
+
+    <div class="date-pick-box">
+      <!--simple form rendering -->
+      <%= render 'form', array: [@game, @rent] %>
+      <%= button_to 'Back', games_path, :method => :get, class:"rent-page-back-button" %>
+    </div>
+
+    <!--geocoding -->
+    <div id="rent-game-page-map"
+      data-controller="mapbox"
+      data-mapbox-markers-value="<%= @marker.to_json %>"
+      data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
+
+  </div>
+
 </div>

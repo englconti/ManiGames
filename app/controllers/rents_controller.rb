@@ -1,9 +1,12 @@
 class RentsController < ApplicationController
-  before_action :set_rent, only: %i[show edit update]
+  before_action :set_rent, only: %i[show edit update destroy]
 
   def new
     @game = Game.find(params[:game_id])
     @rent = Rent.new
+
+    # adding for geocode:
+    @marker = [{ lat: @game.latitude, lng: @game.longitude }]
   end
 
   def create
@@ -11,11 +14,14 @@ class RentsController < ApplicationController
 
     @game = Game.find(params[:game_id])
     @rent.game = @game
-    @rent.price = (@rent.end_date - @rent.start_date).to_i * @rent.game.daily_rent
-
+    @rent.price = ((@rent.end_date - @rent.start_date).to_i / 86_400) * @rent.game.daily_rent
+    rent_period = ((@rent.end_date - @rent.start_date).to_i / 86_400)
     @rent.user = current_user
 
-    if @rent.save
+    if rent_period < @game.min_rent_period
+      flash.alert = "The minimum amount of days for this game is #{@game.min_rent_period}"
+      render :new
+    elsif @rent.save
       # Verificar essa rota para user_path(@rent.user)
       # A ideia é direcionar o usuário para sua página inicial após fazer a reserva.
       redirect_to user_path(@rent.user), notice: 'Rent was successfully created.'
@@ -42,6 +48,12 @@ class RentsController < ApplicationController
       redirect_to @rent, notice: 'Rent was successfully updated.'
     else
       render :edit
+    end
+  end
+
+  def destroy
+    if @rent.destroy
+      redirect_to user_path(current_user)
     end
   end
 
