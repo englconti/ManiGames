@@ -1,7 +1,7 @@
 <div class= "ubanner">
 
-    <img src="https://kitt.lewagon.com/placeholder/users/ssaunier"
-         alt="profile picture" style="border-radius: 100%">
+  <img src="https://kitt.lewagon.com/placeholder/users/ssaunier"
+       alt="profile picture" style="border-radius: 100%">
   <div class="upfp">
     <h3>player: <%= @user.username.downcase %></h3>
     <h6>email: <%= @user.email.downcase %></h6>
@@ -66,7 +66,6 @@
       <div id="rented-games-by-me">
         <h3>GAMES I RENTED</h3>
         <% @rents.each do |rent|%>
-
           <!-- cards for rent out -->
           <div class="ucard-trip">
             <img src="<%= rent.game.gamecover %>" />

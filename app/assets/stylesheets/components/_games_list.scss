@@ -1,0 +1,20 @@
+#game-list {
+
+  background-image: url(https://res.cloudinary.com/guijafrone/image/upload/v1654171707/MANI%20GAMES/background/gameboy-background_paebu0.jpg);
+  // background-size: cover;
+  background-position: center;
+  background-repeat: repeat;
+
+  h1 {
+    font-family: 'Press Start 2P', cursive;
+    text-align: center;
+    margin-top: 10px;
+  }
+}
+
+#games-search {
+  display: flex;
+  justify-content:space-between;
+  margin: 20px auto;
+  width: 80vw;
+}
