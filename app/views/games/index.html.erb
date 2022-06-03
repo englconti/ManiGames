@@ -6,55 +6,56 @@
     <div style="display: flex; justify-content:space-between; align-items:center; margin: 20px auto; width: 80vw;">
 
       <h1>Game List</h1>
-      <!--<h1><%= link_to "Game List", games_path, style:"color:white"%></h1>-->
 
       <div>
-        <!--<input type="text" id="search-bar" placeholder="Search for a game here" style="width: 60vw;">-->
         <%= form_tag games_path, id: "search-bar", method: :get do %>
           <%= text_field_tag :query,
             params[:query],
             class: "form-control",
             placeholder: "Seach for a game here" %>
       </div>
+
       <div>
         <%= submit_tag "Search", class:"btn btn-primary" %>
       </div>
       <% end %>
 
     </div>
+
   </div>
 
   <% @games.each do |game| %>
-    <div class="card-trip">
+    <div class="game-card-trip <%= "game-card-not-available" unless game.available %>">
 
       <!--Validation for Game Image-->
         <% if game.photo.key.nil? %>
           <%= image_tag("std-img.jpg", class:"index-page-game-img")  %>
-          <!--<img src="https://cdn.shopify.com/s/files/1/2650/0192/products/2018-03-31_16.34.13_1200x1200.jpg?v=1522620678">-->
         <% else %>
           <%= cl_image_tag game.photo.key, class:"index-page-game-img", crop: :fill %>
         <% end %>
       <!--End of validation for game image-->
 
-      <div class="card-trip-infos">
-        <h2><%= game.title %></h2>
+      <div class="game-card-trip-infos">
+        <p><%= game.title %></p>
         <div>
-          <h5>Platform: <%= game.console %></h5>
-          <h5>Genre: <%= game.genre %></h5>
-          <h5>Brand: <%= game.brand %></h5>
-          <h5>Location: <%= game.address %></h5>
-          <h5>Owner: <%= game.user.username %></h5>
+          <p>Platform: <%= game.console %></p>
+          <p>Genre: <%= game.genre %></p>
+          <p>Brand: <%= game.brand %></p>
+          <p>Location: <%= game.address %></p>
         </div>
       </div>
 
       <div id="card-price-rent-btn">
-        <h2 class="card-trip-pricing">Daily rent price: R$<%= game.daily_rent %>,00</h2>
-        <p><%= link_to "Rent game", new_game_rent_path(game), class: "btn-gradient btn-rent-game" %></p>
+        <div style="display: flex; flex-direction: column; align-items: flex-end;">
+          <p>Daily rent: R$ <%= game.daily_rent %>,00</p>
+          <p>Owner: <%= game.user.username %></p>
+          <p class="game-card-not-available-text"><%= "Currently not available!" unless game.available %></p>
+        </div>
+        <a><%= link_to "Rent game", new_game_rent_path(game), class: "btn-gradient btn-rent-game" %></a>
       </div>
+
     </div>
 
   <% end %>
 
 </div>
-
-<!-- link_to image_tag("#{game.gamecover}"), game_path(game), class: "card-trip-img" -->
