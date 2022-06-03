@@ -19,7 +19,16 @@
 
           <!-- cards for games -->
           <div class="ucard-trip">
-            <img src="<%= game.gamecover %>" />
+
+            <!--Validation for Game Image-->
+              <% if game.photo.key.nil? %>
+                <%= image_tag("std-img.jpg", class:"user-page-game-img")  %>
+                <!--<img src="https://cdn.shopify.com/s/files/1/2650/0192/products/2018-03-31_16.34.13_1200x1200.jpg?v=1522620678">-->
+              <% else %>
+                <%= cl_image_tag game.photo.key, class:"user-page-game-img", crop: :fill %>
+              <% end %>
+            <!--End of validation for game image-->
+
             <div class="ucard-trip-infos">
               <div>
                 <h2><%= game.title %></h2>
@@ -45,7 +54,16 @@
 
             <!-- cards for rents out -->
             <div class="ucard-trip">
-              <img src="<%= game.gamecover %>" />
+
+            <!--Validation for Game Image-->
+              <% if game.photo.key.nil? %>
+                <%= image_tag("std-img.jpg", class:"user-page-game-img")  %>
+                <!--<img src="https://cdn.shopify.com/s/files/1/2650/0192/products/2018-03-31_16.34.13_1200x1200.jpg?v=1522620678">-->
+              <% else %>
+                <%= cl_image_tag game.photo.key, class:"user-page-game-img", crop: :fill %>
+              <% end %>
+            <!--End of validation for game image-->
+
               <div class="ucard-trip-infos">
                 <div>
                   <h2><%= game.title %></h2>
@@ -68,7 +86,16 @@
         <% @rents.each do |rent|%>
           <!-- cards for rent out -->
           <div class="ucard-trip">
-            <img src="<%= rent.game.gamecover %>" />
+
+            <!--Validation for Game Image-->
+              <% if rent.game.photo.key.nil? %>
+                <%= image_tag("std-img.jpg", class:"user-page-game-img")  %>
+                <!--<img src="https://cdn.shopify.com/s/files/1/2650/0192/products/2018-03-31_16.34.13_1200x1200.jpg?v=1522620678">-->
+              <% else %>
+                <%= cl_image_tag rent.game.photo.key, class:"user-page-game-img", crop: :fill %>
+              <% end %>
+            <!--End of validation for game image-->
+
             <div class="ucard-trip-infos">
               <div>
                 <h2><%= rent.game.title %></h2>

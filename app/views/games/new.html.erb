@@ -15,6 +15,10 @@
       <%= f.input :released_year, placeholder: "AAAA" %>
       <%= f.input :address, placeholder: "Input the game address" %>
 
+      <!--Upload picture to cloudinary-->
+      <%= f.input :photo, as: :file, label: "Upload a game photo for your game" %>
+      <!--End of upload picture-->
+
       <%= f.button :submit, class: "btn btn-gradient" %>
     <% end %>
   <br>
