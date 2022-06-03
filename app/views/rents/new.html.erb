@@ -1,8 +1,8 @@
-<div id="form_box" style="margin: 5vh 30vw 5vh 2vw; border: 1px solid black; border-radius: 5px; padding: 10px;">
+<div id="form_box" style="background-color: hsl(0,4%,65%); margin: 5vh 30vw 5vh 2vw; border: 1px solid black; border-radius: 5px; padding: 10px;">
 
-  <div style="background-color: white; border-radius: 5px; display: flex; align-items: center; justify-content: space-around; margin: 0 0 15px 0;">
-    <img style="border: 1px solid red; width: 200px; border-radius: 5px" src="https://images.tcdn.com.br/img/img_prod/649042/mario_kart_double_dash_usado_nintendo_gamecube_4861_1_20200505182319.jpg">
-    <h1 style="text-align:center;"><%= @game.title %></h1>
+  <div style="height: 300px;color: black; background-color: hsl(34,30%,91%); border-radius: 5px; display: flex; align-items: center; justify-content: space-around; margin: 0 0 15px 0; border: 3px solid hsl(0,2%,26%)">
+    <img style="border: 1px solid black; width: 200px; border-radius: 5px" src="https://images.tcdn.com.br/img/img_prod/649042/mario_kart_double_dash_usado_nintendo_gamecube_4861_1_20200505182319.jpg">
+    <h1 style="text-align:center; color: black;"><%= @game.title %></h1>
     <ul style="margin: 0 ; ">
       <li>Game title: <%= @game.title %></li>
       <li>Genre: <%= @game.genre %></li>
@@ -12,8 +12,6 @@
       <li>Owner: <%= @game.user.username %></li>
       <li>Daily rent price: R$<%= @game.daily_rent %>,00</li>
       <li>Minimum rent period: <%= @game.min_rent_period %> days </li>
-      <li>Lat: <%= @game.latitude %> Lng: <%= @game.longitude %></li>
-
     </ul>
   </div>
 
