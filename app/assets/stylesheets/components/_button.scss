@@ -3,24 +3,33 @@
   padding: 8px 24px;
   border-radius: 4px;
   font-weight: bold;
-  background: linear-gradient(#167FFB, #0F60C4);
+  background: linear-gradient(#410287, #4d0491);
   transition: background 0.3s ease;
-  border: 1px solid #0F60C4;
+  border: 1px solid #35007c;
   text-decoration: none;
+  font-family: 'Audiowide', cursive;
 }
 
 .btn-gradient:hover {
-  background: linear-gradient(#147EFF, #0F67DA);
+  background: linear-gradient(#58079c, #640ba7);
   color: white;
 }
+
+.btn-home i {
+  margin-left: 5px;
+  transition: transform .25s cubic-bezier(9, 9, .5,2);
+}
+
+.btn-home:hover i {
+  transform: translateX(3px);
 
 #btn-add-game {
   height: 50px;
   margin-top: 50px;
   width: 15vw;
   text-align: center;
-}
 
+}
 
 .btn-home {
   color: white;
@@ -81,3 +90,4 @@
     background: linear-gradient(#68a54b, #74ad5a);
   }
 }
+
