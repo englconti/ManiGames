@@ -6,7 +6,8 @@ class GamesController < ApplicationController
     if current_user.nil?
       @games = params[:query].present? ? Game.search_by_all(params[:query]) : Game.all
     else
-      @games = Game.where("user_id != ?", current_user.id)
+      # FIX THIS LOGIC LATER (Logged user can't be able to see his own games when searching)
+      @games = params[:query].present? ? Game.search_by_all(params[:query]) : Game.where("user_id != ?", current_user.id)
     end
   end
 
