@@ -1,10 +1,12 @@
 .ucard-trip {
   // overflow: hidden;
   background: white;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  box-shadow: 2px 2px 30px rgba(0,0,0,0.9);
   margin: 10px;
-  border-radius: 5px;
+  border-radius: 15px;
   width: 25vw;
+  height: 54vh;
+  padding-bottom: 10px;
 }
 
 .ucard-trip > img {
@@ -14,6 +16,7 @@
   // padding: 15px;
   margin-bottom: 10px;
   object-position: top;
+  border-radius: 10px 10px 0 0;
 }
 
 .ucard-trip h2 {
@@ -24,11 +27,11 @@
   text-align: initial;
 }
 
-.ucard-trip p {
-  font-size: 15px;
-  opacity: .7;
-  margin: 0;
-  text-align: end;
+.ucard-trip h6 {
+  color: black;
+  font-weight: lighter;
+  text-decoration: none;
+  font-family: 'Audiowide', cursive;
 }
 
 
@@ -39,6 +42,7 @@
   align-items: flex-end;
   position: relative;
 }
+
 
 .ucard-trip-infos .card-trip-user {
   position: absolute;

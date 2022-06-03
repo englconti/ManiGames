@@ -1,10 +1,15 @@
-<div class= "ubanner">
+<div id= "ubanner">
 
-  <img src="https://kitt.lewagon.com/placeholder/users/ssaunier"
+  <br>
+
+  <img src="https://res.cloudinary.com/guijafrone/image/upload/v1654200908/MANI%20GAMES/rhydon_ifqsgl.jpg"
        alt="profile picture" style="border-radius: 100%">
+
+  <br>
   <div class="upfp">
-    <h3>player: <%= @user.username.downcase %></h3>
-    <h6>email: <%= @user.email.downcase %></h6>
+
+    <h2>Player: <%= @user.username.capitalize %></h2>
+    <p>Email: <%= @user.email %></p>
   </div>
 
   <br>
@@ -14,7 +19,7 @@
     <div class="utemplate">
       <!-- Container for the game cards -->
       <div id="my-games">
-        <h3 style="display: inline-flex; align-items: flex-start">MY GAMES<%= link_to 'Add a game!', new_game_path, class: "ubtn-gradient" %></h3>
+        <h3>MY GAMES  <%= link_to 'Add a game!', new_game_path, class: "ubtn-gradient" %></h3>
         <% @user.games.each do |game|%>
 
           <!-- cards for games -->
@@ -31,13 +36,13 @@
 
             <div class="ucard-trip-infos">
               <div>
-                <h2><%= game.title %></h2>
-                <h2><%= game.console %></h2>
+                <h6><%= game.title %></h6>
+                <h6><%= game.console %></h6>
               </div>
               <div>
                 <% game.available = game.rents.empty? %>
-                <p>Rent/day: $<%= game.daily_rent %></p>
-                <p>Available: <%= game.available ? "YES" : "NO" %></p>
+                <h6>Rent/day: $<%= game.daily_rent %></p>
+                <h6>Available: <%= game.available ? "YES" : "NO" %></h6>
               </div>
             </div>
             <%= link_to "Edit game", edit_game_path(game), class: "ubtn-gradient" %>
@@ -66,13 +71,13 @@
 
               <div class="ucard-trip-infos">
                 <div>
-                  <h2><%= game.title %></h2>
-                  <h2>Renter id: <%= "Renter ID: #{game.rents[0].user_id}" %></h2>
-                  <h2>Renter alias: <%= "Renter Nickname: #{game.rents[0].user.username}" %></h2>
+                  <h6><%= game.title %></h6>
+                  <h6><%= "Renter ID: #{game.rents[0].user_id}" %></h6>
+                  <h6><%= "Renter Nickname: #{game.rents[0].user.username.capitalize}" %></h6>
                 </div>
                 <div>
-                  <h2 class="ucard-trip-pricing">From: <%=  game.rents[0].start_date.to_s.split(" ")[0] %></h2>
-                  <h2 class="ucard-trip-pricing">Until: <%=  game.rents[0].end_date.to_s.split(" ")[0] %></h2>
+                  <h6 class="ucard-trip-pricing">From: <%=  game.rents[0].start_date.to_s.split(" ")[0] %></h6>
+                  <h6 class="ucard-trip-pricing">Until: <%=  game.rents[0].end_date.to_s.split(" ")[0] %></h6>
                 </div>
               </div>
             </div>
@@ -82,7 +87,7 @@
 
       <!-- Container for the rent in cards -->
       <div id="rented-games-by-me">
-        <h3>GAMES I RENTED</h3>
+        <h3>RENTED GAMES</h3>
         <% @rents.each do |rent|%>
           <!-- cards for rent out -->
           <div class="ucard-trip">
@@ -98,20 +103,24 @@
 
             <div class="ucard-trip-infos">
               <div>
-                <h2><%= rent.game.title %></h2>
-                <h2><%= rent.game.console %></h2>
-                <h2>OWNER: <%=  rent.game.user.username%></h2>
+                <h6><%= rent.game.title %></h6>
+                <h6><%= rent.game.console %></h6>
+                <h6>Owner: <%=  rent.game.user.username.capitalize%></h6>
               </div>
-              <div>
-                <h2 class="ucard-trip-pricing">From: <%=  rent.start_date.to_s.split(" ")[0] %></h2>
-                <h2 class="ucard-trip-pricing">Until: <%=  rent.end_date.to_s.split(" ")[0] %></h2>
+              <div class="ucard-trip-pricing">
+                <h6>From: <%=  rent.start_date.to_s.split(" ")[0] %></h6>
+                <h6>Until: <%=  rent.end_date.to_s.split(" ")[0] %></h6>
               </div>
             </div>
-            <h2 style="text-align: center">TOTAL: $ <%=  rent.price %></h2>
+            <h6 style="text-align: center">TOTAL: $ <%=  rent.price %></h6>
+
+            <p><%= link_to "Cancel Rent", rent_path(rent), method: 'DELETE', data: { confirm: "Are you sure?" }, class: "ubtn-gradient" %></p>
+
           </div>
-          <p><%= link_to "Cancel Rent", rent_path(rent), method: 'DELETE', data: { confirm: "Are you sure?" }, class: "ubtn-gradient" %></p>
         <%end%>
       </div>
     </div>
   </div>
+  <br>
+  <br>
 </div>
