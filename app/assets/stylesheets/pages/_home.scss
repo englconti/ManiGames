@@ -14,12 +14,15 @@ body {
 #banner-img {
   position: relative;
   display: flex;
+  justify-content: center;
   width: auto;
   height: 800px;
   background-image: url(https://res.cloudinary.com/guijafrone/image/upload/v1654169985/MANI%20GAMES/controle_nintendo_nav-bar_nh3j4r.jpg);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+  align-items: end;
+  padding-bottom: 150px;
 }
 
 #banner_text {
@@ -38,7 +41,7 @@ body {
     font-size: 100px;
     font-weight: bolder;
     color: white;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+    text-shadow: 1px 1px 20px black
   }
 
   p {
@@ -46,8 +49,8 @@ body {
     color: white;
     font-weight: lighter;
     font-family: 'Play', sans-serif;
-    opacity: .7;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+    opacity: .8;
+    text-shadow: 1px 1px 20px black
   }
 }
 
