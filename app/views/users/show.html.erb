@@ -2,7 +2,7 @@
 
   <br>
 
-  <img src="https://kitt.lewagon.com/placeholder/users/ssaunier"
+  <img src="https://res.cloudinary.com/guijafrone/image/upload/v1654200908/MANI%20GAMES/rhydon_ifqsgl.jpg"
        alt="profile picture" style="border-radius: 100%">
 
   <br>
@@ -105,7 +105,7 @@
               <div>
                 <h6><%= rent.game.title %></h6>
                 <h6><%= rent.game.console %></h6>
-                <h6>OWNER: <%=  rent.game.user.username%></h6>
+                <h6>Owner: <%=  rent.game.user.username.capitalize%></h6>
               </div>
               <div class="ucard-trip-pricing">
                 <h6>From: <%=  rent.start_date.to_s.split(" ")[0] %></h6>
