@@ -1,0 +1,65 @@
+#rent_form_box  {
+  background-color: rgba(169, 162, 162, 0.157);
+  margin: 5vh 30vw 5vh 2vw;
+  border: 1px solid rgb(255, 255, 255);
+  border-radius: 5px;
+  padding: 10px;
+}
+
+#upper-rent-container {
+  height: 300px;
+  color: black;
+  background-color: rgba(255, 255, 255, 0.736);
+  border-radius: 5px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin: 0 0 15px 0;
+  border: 3px solid rgb(255, 255, 255);
+
+  font-family: 'Press Start 2P', cursive;
+
+  #game-title {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 30px;
+    text-align: center;
+    color: black;
+
+    padding: 10px;
+    width: 30%;
+    border: 1px solid rgba(255, 255, 255, 0.85);
+    text-shadow: 1px 6px 5px #000000a0;
+  }
+
+  li {
+    font-size: 10px;
+    margin: 15px 0;
+  }
+}
+
+#game-description-list {
+  margin: 0 0;
+  width: 35%;
+  border: 1px solid rgb(255, 255, 255);
+}
+
+#msg-owner-txt-box {
+  height:150px;
+  border-radius: 5px;
+  border: 1px solid black;
+  margin: 0 0 7px 0;
+}
+
+#msg-owner {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  width: 250px;
+
+  font-family: 'Press Start 2P', cursive;
+  p {
+    font-size: 10px;
+  }
+}
