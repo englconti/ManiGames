@@ -1,15 +1,32 @@
+// .ubtn-gradient {
+//   text-decoration: none;
+//   color: white;
+//   padding: 6px 12px;
+//   border-radius: 4px;
+//   font-size: small;
+//   font-weight: bold;
+//   background: linear-gradient(#167FFB, #0F60C4);
+//   transition: background 0.3s ease;
+//   // border: 1px solid #0F60C4;
+//   &:hover{
+//     background: linear-gradient(#6294d2, #5695e7);
+//     color: white;
+//   }
+// }
+
 .ubtn-gradient {
-  text-decoration: none;
   color: white;
-  padding: 6px 12px;
+  padding: 8px 24px;
   border-radius: 4px;
-  font-size: small;
   font-weight: bold;
-  background: linear-gradient(#167FFB, #0F60C4);
+  background: linear-gradient(#410287, #4d0491);
   transition: background 0.3s ease;
-  // border: 1px solid #0F60C4;
-  &:hover{
-    background: linear-gradient(#6294d2, #5695e7);
-    color: white;
-  }
+  border: 1px solid #35007c;
+  text-decoration: none;
+  font-family: 'Audiowide', cursive;
+}
+
+.ubtn-gradient:hover {
+  background: linear-gradient(#58079c, #640ba7);
+  color: white;
 }
