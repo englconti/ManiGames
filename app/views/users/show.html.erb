@@ -87,37 +87,78 @@
 
       <!-- Container for the rent in cards -->
       <div id="rented-games-by-me">
-        <h3>GAMES YOU RENTED</h3>
-        <% @rents.each do |rent|%>
-          <!-- cards for rent out -->
-          <div class="ucard-trip">
+        <h3>RENTED GAMES</h3>
+        <div id="my-ongoing-rentals">
+          <h3>MY ONGOING RENTALS</h3>
+          <% @rents.each do |rent|%>
+            <% if (rent.start_date <= Time.now && rent.end_date > Time.now) %>
+              <!-- cards for rent out -->
+              <div class="ucard-trip">
 
-            <!--Validation for Game Image-->
-              <% if rent.game.photo.key.nil? %>
-                <%= image_tag("std-img.jpg", class:"user-page-game-img")  %>
-                <!--<img src="https://cdn.shopify.com/s/files/1/2650/0192/products/2018-03-31_16.34.13_1200x1200.jpg?v=1522620678">-->
-              <% else %>
-                <%= cl_image_tag rent.game.photo.key, class:"user-page-game-img", crop: :fill %>
-              <% end %>
-            <!--End of validation for game image-->
+                <!--Validation for Game Image-->
+                  <% if rent.game.photo.key.nil? %>
+                    <%= image_tag("std-img.jpg", class:"user-page-game-img")  %>
+                    <!--<img src="https://cdn.shopify.com/s/files/1/2650/0192/products/2018-03-31_16.34.13_1200x1200.jpg?v=1522620678">-->
+                  <% else %>
+                    <%= cl_image_tag rent.game.photo.key, class:"user-page-game-img", crop: :fill %>
+                  <% end %>
+                <!--End of validation for game image-->
 
-            <div class="ucard-trip-infos">
-              <div>
-                <h6><%= rent.game.title %></h6>
-                <h6><%= rent.game.console %></h6>
-                <h6>Owner: <%=  rent.game.user.username.capitalize%></h6>
+                <div class="ucard-trip-infos">
+                  <div>
+                    <h6><%= rent.game.title %></h6>
+                    <h6><%= rent.game.console %></h6>
+                    <h6>Owner: <%=  rent.game.user.username.capitalize%></h6>
+                  </div>
+                  <div class="ucard-trip-pricing">
+                    <h6>From: <%=  rent.start_date.to_s.split(" ")[0] %></h6>
+                    <h6>Until: <%=  rent.end_date.to_s.split(" ")[0] %></h6>
+                  </div>
+                </div>
+                <h6 style="text-align: center">TOTAL: $ <%=  rent.price %></h6>
+
+                <p><%= link_to "Cancel Rent", rent_path(rent), method: 'DELETE', data: { confirm: "Are you sure?" }, class: "ubtn-gradient" %></p>
+
               </div>
-              <div class="ucard-trip-pricing">
-                <h6>From: <%=  rent.start_date.to_s.split(" ")[0] %></h6>
-                <h6>Until: <%=  rent.end_date.to_s.split(" ")[0] %></h6>
+            <% end %>
+          <% end %>
+        </div>
+
+        <div id="my-future-rentals">
+          <h3>My Future Rentals</h3>
+          <% @rents.each do |rent|%>
+            <% if (rent.start_date > Time.now) %>
+              <!-- cards for rent out -->
+              <div class="ucard-trip">
+
+                <!--Validation for Game Image-->
+                  <% if rent.game.photo.key.nil? %>
+                    <%= image_tag("std-img.jpg", class:"user-page-game-img")  %>
+                    <!--<img src="https://cdn.shopify.com/s/files/1/2650/0192/products/2018-03-31_16.34.13_1200x1200.jpg?v=1522620678">-->
+                  <% else %>
+                    <%= cl_image_tag rent.game.photo.key, class:"user-page-game-img", crop: :fill %>
+                  <% end %>
+                <!--End of validation for game image-->
+
+                <div class="ucard-trip-infos">
+                  <div>
+                    <h6><%= rent.game.title %></h6>
+                    <h6><%= rent.game.console %></h6>
+                    <h6>Owner: <%=  rent.game.user.username.capitalize%></h6>
+                  </div>
+                  <div class="ucard-trip-pricing">
+                    <h6>From: <%=  rent.start_date.to_s.split(" ")[0] %></h6>
+                    <h6>Until: <%=  rent.end_date.to_s.split(" ")[0] %></h6>
+                  </div>
+                </div>
+                <h6 style="text-align: center">TOTAL: $ <%=  rent.price %></h6>
+
+                <p><%= link_to "Cancel Rent", rent_path(rent), method: 'DELETE', data: { confirm: "Are you sure?" }, class: "ubtn-gradient" %></p>
+
               </div>
-            </div>
-            <h6 style="text-align: center">TOTAL: $ <%=  rent.price %></h6>
-
-            <p><%= link_to "Cancel Rent", rent_path(rent), method: 'DELETE', data: { confirm: "Are you sure?" }, class: "ubtn-gradient" %></p>
-
-          </div>
-        <%end%>
+            <% end %>
+          <%end%>
+        </div>
       </div>
     </div>
   </div>
