@@ -6,7 +6,9 @@
       <p>Rent the games that you love and make money renting the ones that you don't play anymore!</p>
     </div>
     <div style="position: absolute; margin: 60px">
+      <% if current_user.nil? %>
       <h5> <%= link_to "START", new_user_session_path, class: "btn-home" %></h5>
+      <% end %>
     </div>
     <div style="position: absolute; margin: -125px">
       <h5> <%= link_to "SHOWGAMES", games_path, class: "btn-home" %></h5>
