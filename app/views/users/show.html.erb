@@ -19,7 +19,10 @@
     <div class="utemplate">
       <!-- Container for the game cards -->
       <div id="my-games">
-        <h3>MY GAMES  <%= link_to 'Add a game!', new_game_path, class: "ubtn-gradient" %></h3>
+        <div style="display:flex; align-items: baseline;">
+        <h3>MY GAMES</h3>
+        <%= link_to 'Add a game!', new_game_path, class: "ubtn-gradient", style:"margin-left: 20px" %>
+        </div>
         <% @user.games.each do |game|%>
 
           <!-- cards for games -->
@@ -72,8 +75,7 @@
               <div class="ucard-trip-infos">
                 <div>
                   <h6><%= game.title %></h6>
-                  <h6><%= "Renter ID: #{game.rents[0].user_id}" %></h6>
-                  <h6><%= "Renter Nickname: #{game.rents[0].user.username.capitalize}" %></h6>
+                  <h6><%= "Who is renting: #{game.rents[0].user.username.capitalize}" %></h6>
                 </div>
                 <div>
                   <h6 class="ucard-trip-pricing">From: <%=  game.rents[0].start_date.to_s.split(" ")[0] %></h6>

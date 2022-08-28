@@ -2,11 +2,8 @@
 <div id="game-list">
 
   <div id ="games-search">
-
     <div style="display: flex; justify-content:space-between; align-items:center; margin: 20px auto; width: 80vw;">
-
       <h1>Game List</h1>
-
       <div>
         <%= form_tag games_path, id: "search-bar", method: :get do %>
           <%= text_field_tag :query,
@@ -14,17 +11,15 @@
             class: "form-control",
             placeholder: "Seach for a game here" %>
       </div>
-
       <div>
         <%= submit_tag "Search", class:"btn btn-primary" %>
       </div>
       <% end %>
-
     </div>
-
   </div>
 
-  <% @games.each do |game| %>
+<% @games.each do |game| %>
+  <% next if !current_user.nil? && game.user_id == current_user.id %>
     <div class="game-card-trip <%= "game-card-not-available" unless game.available %>">
 
       <!--Validation for Game Image-->
@@ -55,7 +50,6 @@
       </div>
 
     </div>
-
-  <% end %>
+<% end %>
 
 </div>
