@@ -89,9 +89,9 @@
       <div id="rented-games-by-me">
         <h3>THE GAMES I RENTED</h3>
         <div id="my-ongoing-rentals">
-          <h3>MY ONGOING RENTALS</h3>
+          <h3>My Ongoing Rentals</h3>
           <% if @ongoing_rents.empty? %>
-            <p>You don't have any games planned </p>
+            <p>You're not renting any game at the moment</p>
           <%else%>
             <% @ongoing_rents.each do |rent|%>
               <!-- cards for rent out -->
