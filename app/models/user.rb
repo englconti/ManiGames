@@ -5,6 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :rents, dependent: :destroy
   has_many :games, dependent: :destroy
+  has_one_attached :avatar
+
 
   # Needs to include validation for characters with REGEX:
   validates :email, presence: true, uniqueness: true
