@@ -14,6 +14,13 @@ class User < ApplicationRecord
   # Check if this will work to define rolls for the user when renting or advertising:
   # validates :role, inclusion: { in: %w[owner renter nil] }
 
+  def avatar_thumbnail
+    if avatar.attached?
+      avatar.variant(resize: "150x150!").processed
+    else
+      image_tag 'https://res.cloudinary.com/guijafrone/image/upload/v1654200908/MANI%20GAMES/rhydon_ifqsgl.jpg'
+    end
+  end
 end
 
 #      invoke  active_record
